@@ -13,20 +13,15 @@ public class StatmentFirstRefactor {
         String result = "invoice: (고객명: " + invoice.getCustomer() + ")\n";
 
         for (Invoice inv : invoice.getInvoiceList()) {
-            int thisAmount = 0;
 
-            Play playId = plays.get(plays.indexOf(inv.getPlayId()));
-            thisAmount = amountFor(inv, playId);
             volumnCredits += Math.max(inv.getAudience() - 30, 0);
 
-            if ("comedy".equals(playId.type)) {
+            if ("comedy".equals(playFor(inv).type)) {
                 volumnCredits += Math.floor(inv.getAudience() / 5);
             }
 
-            result = result + playId.name + " : " + thisAmount / 100 + "(" + inv.getAudience() + " 석)\n";
-            totalAmount += thisAmount;
-
-
+            result = result + playFor(inv).name + " : " + amountFor(inv) / 100 + "(" + inv.getAudience() + " 석)\n";
+            totalAmount += amountFor(inv);
 
         }
         result = result + "total Amount: " + totalAmount / 100 + "\n";
@@ -35,9 +30,9 @@ public class StatmentFirstRefactor {
 
     }
 
-    private int amountFor(Invoice inv, Play playId){
+    private int amountFor(Invoice inv){
         int result = 0;
-        switch (playId.type) {
+        switch (playFor(inv).type) {
             case "tragedy":
                 result = 40000;
                 if (inv.getAudience() > 30) {
@@ -52,8 +47,12 @@ public class StatmentFirstRefactor {
                 result += 300 * inv.getAudience();
                 break;
             default:
-                throw new GenreNotFoundException(playId.type);
+                throw new GenreNotFoundException(playFor(inv).type);
         }
         return result;
+    }
+
+    private Play playFor(Invoice invoice){
+        return (invoice.getPlayId());
     }
 }
