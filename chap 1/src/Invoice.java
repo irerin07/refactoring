@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 /**
  * @author 민경수
  * @description invoice
@@ -26,5 +28,18 @@ public class Invoice {
 
     public void setAudience(Integer audience) {
         this.audience = audience;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Invoice invoice = (Invoice) o;
+        return Objects.equals(playId, invoice.playId) && Objects.equals(audience, invoice.audience);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(playId, audience);
     }
 }

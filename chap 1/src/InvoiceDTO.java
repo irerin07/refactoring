@@ -7,6 +7,7 @@ import java.util.List;
  **********************************************************************************************************************/
 public class InvoiceDTO {
     private String customer;
+    private List<Invoice> invoiceList;
 
     public String getCustomer() {
         return customer;
@@ -15,8 +16,6 @@ public class InvoiceDTO {
     public void setCustomer(String customer) {
         this.customer = customer;
     }
-
-    private List<Invoice> invoiceList;
 
     public List<Invoice> getInvoiceList() {
         return invoiceList;

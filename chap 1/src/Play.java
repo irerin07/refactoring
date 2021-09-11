@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 /**
  * @author 민경수
  * @description play
@@ -26,5 +28,18 @@ public class Play {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Play play = (Play) o;
+        return Objects.equals(name, play.name) && Objects.equals(type, play.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, type);
     }
 }
