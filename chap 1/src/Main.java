@@ -18,14 +18,15 @@ public class Main {
         invoiceList.add(new Invoice(new AsLike("AsLike", "comedy"), 35));
         invoiceList.add(new Invoice(new Othello("Othello", "tragedy"), 40));
 
-        invoiceDTO.setInvoiceList(invoiceList);
+        invoiceDTO.setPerformances(invoiceList);
 
         List<Play> plays = new ArrayList<>();
         plays.add(new Hamlet("Hamlet", "tragedy"));
         plays.add(new AsLike("AsLike", "comedy"));
         plays.add(new Othello("Othello", "tragedy"));
 
-        statement.statement(invoiceDTO, plays);
+        String s = statement.statement(invoiceDTO, plays);
+        System.out.println(s);
     }
 
 }

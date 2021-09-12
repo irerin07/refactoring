@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +13,7 @@ public class Statement {
 
         String result = "invoice: (고객명: " + invoice.getCustomer() + ")\n";
 
-        for (Invoice inv : invoice.getInvoiceList()) {
+        for (Invoice inv : invoice.getPerformances()) {
             int thisAmount = 0;
             
             Play playId = plays.get(plays.indexOf(inv.getPlayId()));

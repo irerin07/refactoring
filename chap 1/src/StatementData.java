@@ -2,12 +2,26 @@ import java.util.List;
 
 /**
  * @author 민경수
- * @description invoice dto
+ * @description statement data
  * @since 2021.09.11
  **********************************************************************************************************************/
-public class InvoiceDTO {
+public class StatementData {
     private String customer;
     private List<Invoice> performances;
+    private List<Play> plays;
+
+    public List<Play> getPlays() {
+        return plays;
+    }
+
+    public void setPlays(List<Play> plays) {
+        this.plays = plays;
+    }
+
+    public StatementData(InvoiceDTO invoiceDTO){
+        this.customer = invoiceDTO.getCustomer();
+        this.performances = invoiceDTO.getPerformances();
+    }
 
     public String getCustomer() {
         return customer;
