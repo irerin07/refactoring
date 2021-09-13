@@ -7,7 +7,7 @@ import java.util.List;
  **********************************************************************************************************************/
 public class StatmentFirstRefactor {
 
-    public static StatementData statementData;
+    public static StatementData statementData = null;
 
     public String statement(InvoiceDTO invoice, List<Play> plays){
         statementData = new StatementData(invoice);
